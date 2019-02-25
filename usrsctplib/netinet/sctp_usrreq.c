@@ -134,18 +134,30 @@ sctp_init(void)
 	SCTP_BASE_VAR(sctp_pcb_initialized) = 0;
 #if defined(__Userspace__)
 #if !defined(THREAD_SUPPORT)
+#if defined(SCTP_INET)
 	SCTP_BASE_VAR(recvmbuf4) = malloc(sizeof(struct mbuf *) * MAXLEN_MBUF_CHAIN);
 	SCTP_BASE_VAR(to_fill4) = MAXLEN_MBUF_CHAIN;
+#endif
+#if defined(SCTP_INET6)
 	SCTP_BASE_VAR(recvmbuf6) = malloc(sizeof(struct mbuf *) * MAXLEN_MBUF_CHAIN);
 	SCTP_BASE_VAR(to_fill6) = MAXLEN_MBUF_CHAIN;
+#endif
+#if defined(SCTP_INET)
 	SCTP_BASE_VAR(udp_recvmbuf4) = malloc(sizeof(struct mbuf *) * MAXLEN_MBUF_CHAIN);
 	SCTP_BASE_VAR(udp_to_fill4) = MAXLEN_MBUF_CHAIN;
+#endif
+#if defined(SCTP_INET6)
 	SCTP_BASE_VAR(udp_recvmbuf6) = malloc(sizeof(struct mbuf *) * MAXLEN_MBUF_CHAIN);
 	SCTP_BASE_VAR(udp_to_fill6) = MAXLEN_MBUF_CHAIN;
+#endif
+#if defined(SCTP_INET)
 	SCTP_BASE_VAR(icmp_recvmbuf4) = malloc(sizeof(struct mbuf *) * MAXLEN_MBUF_CHAIN);
 	SCTP_BASE_VAR(icmp_to_fill4) = MAXLEN_MBUF_CHAIN;
+#endif
+#if defined(SCTP_INET6)
 	SCTP_BASE_VAR(icmp_recvmbuf6) = malloc(sizeof(struct mbuf *) * MAXLEN_MBUF_CHAIN);
 	SCTP_BASE_VAR(icmp_to_fill6) = MAXLEN_MBUF_CHAIN;
+#endif
 #endif
 #if !defined(__Userspace_os_Windows) && (defined(INET) || defined(INET6))
 	SCTP_BASE_VAR(userspace_route) = -1;
