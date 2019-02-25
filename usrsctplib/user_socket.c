@@ -3443,7 +3443,7 @@ usrsctp_disable_crc32c_offload(void)
 
 /* Compute the CRC32C in network byte order */
 uint32_t
-usrsctp_crc32c(void *buffer, size_t length)
+usrsctp_crc32c(const void *buffer, size_t length)
 {
 	uint32_t base = 0xffffffff;
 
