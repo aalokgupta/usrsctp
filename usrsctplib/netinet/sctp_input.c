@@ -2756,7 +2756,7 @@ sctp_handle_cookie_echo(struct mbuf *m, int iphlen, int offset,
 		diff = now;
 		timevalsub(&diff, &time_expires);
 #endif
-		if (diff.tv_sec > UINT32_MAX / 1000000) {
+		if (diff.tv_sec > (time_t) (UINT32_MAX / 1000000)) {
 			staleness = UINT32_MAX;
 		} else {
 			staleness = diff.tv_sec * 1000000;
